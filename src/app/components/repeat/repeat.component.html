@@ -1,0 +1,47 @@
+<div class="row">
+
+
+<div class="col-6">
+    <input list="brow" placeholder="&#xf041; chercher votre city" class="form-control" (keyup.enter)="searchByCity($event.target.value)" >
+<datalist id="brow" class="select-block-level white-border">
+    <option value = "Agadir">
+        <option value = "Al Hoceïma">
+        <option value = "Assilah">
+        <option value = "Casablanca">
+        <option value = "Chefchaouen">
+        <option value = "Dakhla">
+        <option value = "El Jadida">
+        <option value="Oualidia">
+        <option value = "Erfoud">
+        <option value = "Errachidia">
+        <option value = "Essaouira">
+        <option value = "Fes">
+        <option value = "Ifrane">
+        <option value = "Laâyoune">
+        <option value = "Marrakech">
+        <option value = "Meknes">
+        <option value = "Merzouga">
+        <option value = "Mohammédia">
+        <option value = "Nador">
+        <option value = "Ouarzazate">
+        <option value = "Oujda">
+        <option value="Saidia">
+        <option value = "Rabat">
+        <option value = "Salé">
+        <option value = "Tanger">
+        <option value = "Temara">
+        <option value = "Tetouan">
+        <option value = "Zagora">
+</datalist>
+
+</div>
+
+<div class="col-6" *ngIf="statusCat == true">
+<input type="text" placeholder="&#xf02b;Tapes category que vous cherchez" class="form-control border border-danger text-danger" (keyup.enter)="searchCategory($event.target.value)" >
+</div>
+
+<div class="col-6" *ngIf="statusCat == false">
+<ng-select   [items]="cata" bindLabel="name" bindValue="name" placeholder=" &#xf02b; Indiquer une category" style="font-family: FontAwesome;" [(ngModel)]="selected"  (ngModelChange)="go($event)" >
+  </ng-select>
+</div>
+</div>

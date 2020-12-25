@@ -1,0 +1,71 @@
+      <!--
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" >
+        <a class="navbar-brand" routerLink="/">Chari.ma</a>
+      
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul *ngIf="userCurent" class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/addAnnonce">Add-Annonce <span class="sr-only">(current)</span></a>
+                </li>   
+                <li class="nav-item active">
+                    <a class="nav-link" routerLink="/myAnnonce">My-Annonce </a>
+                </li> 
+            </ul>
+
+            <ul *ngIf="!userCurent" class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink="/login" class="nav-link">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a routerLink="/register" class="nav-link">Register</a>
+                  </li>
+            </ul>
+    
+            <ul  *ngIf="userCurent" class="navbar-nav ml-auto">
+              <li class="nav-item mr-3 mt-1">
+                <h6 class="text-white bg-dark">{{userCurent.name | mypipe}}</h6>
+              </li>
+                <li class="nav-item">
+                    <button (click)="loggedOut()" class="btn-logOut"> logout</button>
+                  </li>
+            </ul>
+    
+        </div>
+      </nav>
+      -->
+
+      <nav class="navbar navbar-expand-lg navbar-dark bg-info">
+        <a class="navbar-brand" routerLink="/"> <i class="fa fa-yahoo">- Chari.ma</i></a>
+        <button class="navbar-toggler" type="button"  (click)="isCollapsed =!isCollapsed" [attr.aria.expanded]="!isCollapsed"   aria-controls="navbarSupportedContent">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
+          <ul class="navbar-nav mr-auto" *ngIf="userCurent">
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/addAnnonce">Add-Annonce <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" routerLinkActive="active">
+              <a class="nav-link" routerLink="/myAnnonce">My-Annonce</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto" *ngIf="!userCurent">
+          <li class="nav-item " routerLinkActive="active">
+            <a class="nav-link" routerLink="/login">Login <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" routerLinkActive="active">
+            <a class="nav-link" routerLink="/register">Register</a>
+          </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" *ngIf="userCurent">
+        <li class="nav-item " routerLinkActive="active">
+          <a class="nav-link" style="pointer-events: none;cursor: default; color:black ; font-family: cursive;">{{userCurent.name | mypipe}}<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" style="cursor: pointer; color: black;font-family: cursive;" (click)="loggedOut()">Logout
+         </a>
+        </li>
+    </ul>
+        </div>
+      </nav>

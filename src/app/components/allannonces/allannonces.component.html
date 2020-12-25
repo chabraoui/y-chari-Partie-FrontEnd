@@ -1,0 +1,47 @@
+<div class="row" style="border: 1px solid aqua; background-color: azure; padding: 25px; border-radius: 10%;">
+    <div class="col-4">
+        <input  type="text"class="form-control" placeholder="&#xf002; qu'est ce que vous cherchez? " (keyup)="search(query.value)" #query>
+    </div>
+    <div class="col-8">
+        <app-repeat></app-repeat>
+    </div>
+    
+</div>
+
+<div class="row d-flex justify-content-center" >
+    <h1  *ngIf="searchAnnonce.length > 0">LIST OF ANNONCE</h1>
+</div>
+
+<div class="container" >
+    <div class="images rounded" *ngFor="let list of searchAnnonce | paginate: { id: 'listing_pagination', itemsPerPage: 4, currentPage: page } ">
+        <div class="div">
+            <img  src="{{image+list.annonceId}}" alt="pas d'image">
+        </div>
+        
+        <div class="p" >
+            <h5>{{list.name | uppercase}}</h5>
+            <span>{{list.prix}} DH</span> <br>
+            <i class="fa fa-map-marker"></i> {{list.ville | uppercase }} <br> <i class="fa fa-clock-o"></i> {{list.dateAnnonce | date:'M/d/yyyy h:mm'}} <br>
+            <i class="fa fa-tag"></i>{{list.category | uppercase}}
+            <button [routerLink]="['/annonces/annonce', list.annonceId]" class="btn btn-outline-danger btn-sm">show</button>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<div class="row" *ngIf="searchAnnonce.length == 0">
+    <h2>Pas d'Annonce</h2>
+    </div>
+
+    <div class=" col-md-6 mx-auto" *ngIf="searchAnnonce.length > 0">
+        <pagination-controls id="listing_pagination" (pageChange)="page = $event"></pagination-controls>
+      </div>
+
+    
+
+
+
+    

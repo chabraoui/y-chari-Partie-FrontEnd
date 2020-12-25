@@ -1,0 +1,82 @@
+
+
+    <div class="row" style="margin-top: -50px;" >
+        <div class="card col-md-9 mx-auto mb-5">
+            <div class="card-body">
+                <h4 class="card-title">New Annonce</h4>
+        <form  [formGroup]="annonceForm" (ngSubmit)="ajouter(annonceForm)">
+            
+        
+            <div class="form-group">
+                <label for="title">Name</label>
+               <input  formControlName="name" type="text" class="form-control" id="title" placeholder="Nom d'annonce">
+               <div *ngIf="annonceForm.get('name').invalid && annonceForm.get('name').touched || annonceForm.get('name').dirty">
+                <div *ngIf="annonceForm.get('name').getError('required')" class="text-danger"> this field is required</div>
+                <div *ngIf="annonceForm.get('name').getError('minlength')" class="text-danger"> min= 3 characteres</div>
+                <div *ngIf="annonceForm.get('name').getError('maxlength')" class="text-danger"> max= 16 characteres</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Prix</label>
+               <input  formControlName="prix" type="number" class="form-control" id="lastName" placeholder="tapez le prix">
+               <div *ngIf="annonceForm.get('prix').invalid && annonceForm.get('prix').touched || annonceForm.get('prix').dirty">
+                <div *ngIf="annonceForm.get('prix').getError('required')" class="text-danger"> this field is required</div>
+                <div *ngIf="annonceForm.get('prix').getError('minlength')" class="text-danger"> min= 2 characteres</div>
+                <div *ngIf="annonceForm.get('prix').getError('maxlength')" class="text-danger"> max= 20 characteres</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Description</label>
+                <textarea formControlName="description" type="text" class="form-control" id="email" placeholder="Input field"></textarea>
+                <div *ngIf="annonceForm.get('description').invalid && annonceForm.get('description').touched || annonceForm.get('description').dirty">
+                    <div *ngIf="annonceForm.get('description').getError('required')" class="text-danger"> this field is required</div>
+                    <div *ngIf="annonceForm.get('description').getError('minlength')" class="text-danger"> min= 5 characteres</div>
+                    <div *ngIf="annonceForm.get('description').getError('maxlength')" class="text-danger"> max= 150 characteres</div>
+                  </div>
+           
+            </div>
+         
+            <div class="form-group">
+                <label for="email">Ville</label>
+               <input  formControlName="ville" type="text" class="form-control" id="email" placeholder="Tapez votre ville">
+               <div *ngIf="annonceForm.get('ville').invalid && annonceForm.get('ville').touched || annonceForm.get('ville').dirty">
+                <div *ngIf="annonceForm.get('ville').getError('required')" class="text-danger"> this field is required</div>
+                <div *ngIf="annonceForm.get('ville').getError('minlength')" class="text-danger"> min= 4 characteres</div>
+                <div *ngIf="annonceForm.get('ville').getError('maxlength')" class="text-danger"> max= 13 characteres</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+                <label for="listCategory">Category</label>
+                <ng-select *ngIf="statusCat == false"  [items]="cata" bindLabel="name" bindValue="name" placeholder=" &#xf02b; Indiquer une category" style="font-family: FontAwesome;" formControlName="category" (ngModelChange)="go($event)">
+                </ng-select>
+                <input *ngIf="statusCat == true" type="text" placeholder="&#xf02b;Tapes category que vous voulez" class="form-control border border-danger text-danger" formControlName="category" >
+                <div *ngIf="annonceForm.get('category').invalid && annonceForm.get('category').touched || annonceForm.get('category').dirty">
+                    <div *ngIf="annonceForm.get('category').getError('required')" class="text-danger"> this field is required</div>
+                  </div>
+            </div>
+
+            <div class="form-group">
+                <label for="body0">File Upload</label>
+               <input  type="file" id="body0" class="form-control" accept="image/*" (change)="onSelectFile($event)" style="height: 100%;" multiple  >
+            </div>
+        
+            <button [disabled]="annonceForm.invalid" class="btn btn-primary" >Ajouter</button>
+
+        </form>
+     </div>
+     </div>
+    </div>
+    
+
+
+
+<!--
+                  <select formControlName="category"  id="listCategory" class="form-control" >
+                  <option  >voiture</option>
+                  <option  >appartement</option>
+                  <option  >accessoire</option>
+                </select>
+-->

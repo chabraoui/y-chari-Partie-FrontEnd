@@ -1,0 +1,32 @@
+<div class="row" style="margin-top: -50px;" >
+    <div class="card col-md-9 mx-auto mb-5">
+        <div class="card-body">
+            <h4 class="card-title" style="text-align: center;">Edite Annonce</h4>
+        <form  [formGroup]="annonceForm">
+        
+            <div class="form-group">
+                <label for="title">Name</label>
+               <input  formControlName="name" [(ngModel)]="OneAnnonce.name" type="text" class="form-control" id="title" placeholder="Input field">
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Prix</label>
+               <input  formControlName="prix" [(ngModel)]="OneAnnonce.prix" type="text" class="form-control" id="lastName" placeholder="Input field">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Description</label>
+               <input  formControlName="description" [(ngModel)]="OneAnnonce.description" type="text" class="form-control" id="email" placeholder="Input field">
+            </div>
+ 
+        
+            <button  class="btn btn-danger" (click)="update(annonceForm)">UPDATE</button>
+            <button  class="btn btn-secondary" (click)="cancel()">Cancel</button>
+         
+        </form>
+    
+    </div>
+    
+</div>
+</div>
+
